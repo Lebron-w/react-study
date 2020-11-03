@@ -1,4 +1,5 @@
 import React, {Component,Fragment} from 'react'
+import './style.css'
 
 class Menu extends Component{
     constructor (props) {
@@ -12,16 +13,21 @@ class Menu extends Component{
         return (
             // flex
             <Fragment>
+                {/*注释*/}
                 <div>
-                    <input value={this.state.inputValue} onChange={this.inputChange.bind(this)}/>
+                    <label htmlFor="add">增加导航</label>
+                    <input id="add" className="input" value={this.state.inputValue} onChange={this.inputChange.bind(this)}/>
                     <button onClick={this.addList.bind(this)}>增加导航</button>
                 </div>
                 <ul>
                     {
                         this.state.list.map((item,index) => {
                             return (
-                                <li onClick={this.deleteItem.bind(this,index)} key={index}>
-                                    {item}
+                                <li
+                                   onClick={this.deleteItem.bind(this,index)}
+                                   key={index}
+                                   dangerouslySetInnerHTML={{__html:item}}
+                                >
                                 </li>
                                 )
                         })
