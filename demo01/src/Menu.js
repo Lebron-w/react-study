@@ -19,7 +19,11 @@ class Menu extends Component{
                 <ul>
                     {
                         this.state.list.map((item,index) => {
-                            return <li key={index}>{item}</li>
+                            return (
+                                <li onClick={this.deleteItem.bind(this,index)} key={index}>
+                                    {item}
+                                </li>
+                                )
                         })
                     }
                 </ul>
@@ -38,6 +42,19 @@ class Menu extends Component{
         this.setState({
             list:[...this.state.list, this.state.inputValue],
             inputValue:''
+        })
+    }
+    //删除列表项
+    deleteItem (index) {
+        // 大忌，不能直接操作state的值，会造成很大的性能问题
+        // this.state.list.splice(index,1)
+        // this.setState({
+        //     list:this.state.list
+        // })
+        let list = this.state.list
+        list.splice(index,1)
+        this.setState({
+            list: list
         })
     }
 }
