@@ -1,5 +1,6 @@
 import React, {Component,Fragment} from 'react'
 import './style.css'
+import MenuItem from './MenuItem.js'
 
 class Menu extends Component{
     constructor (props) {
@@ -23,12 +24,13 @@ class Menu extends Component{
                     {
                         this.state.list.map((item,index) => {
                             return (
-                                <li
-                                   onClick={this.deleteItem.bind(this,index)}
-                                   key={index}
-                                   dangerouslySetInnerHTML={{__html:item}}
-                                >
-                                </li>
+                                <MenuItem/>
+                                // <li
+                                //    onClick={this.deleteItem.bind(this,index)}
+                                //    key={index}
+                                //    dangerouslySetInnerHTML={{__html:item}}
+                                // >
+                                // </li>
                                 )
                         })
                     }
