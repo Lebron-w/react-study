@@ -5,7 +5,7 @@ class Menu extends Component{
         super(props) //调用父级的方法
         this.state = {
             inputValue: 'js',
-            list: []
+            list: ['about','product']
         }
     }
     render () {
@@ -14,11 +14,14 @@ class Menu extends Component{
             <Fragment>
                 <div>
                     <input value={this.state.inputValue} onChange={this.inputChange.bind(this)}/>
-                    <button>增加导航</button>
+                    <button onClick={this.addList.bind(this)}>增加导航</button>
                 </div>
                 <ul>
-                    <li>about</li>
-                    <li>product</li>
+                    {
+                        this.state.list.map((item,index) => {
+                            return <li key={index}>{item}</li>
+                        })
+                    }
                 </ul>
             </Fragment>
         )
@@ -28,6 +31,13 @@ class Menu extends Component{
         // console.log(this)
         this.setState({
             inputValue:e.target.value
+        })
+    }
+    //增加列表
+    addList () {
+        this.setState({
+            list:[...this.state.list, this.state.inputValue],
+            inputValue:''
         })
     }
 }
