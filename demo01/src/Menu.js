@@ -9,6 +9,7 @@ class Menu extends Component{
             inputValue: 'js',
             list: ['about','product']
         }
+        this.deleteItem = this.deleteItem.bind(this)
     }
     render () {
         return (
@@ -24,13 +25,18 @@ class Menu extends Component{
                     {
                         this.state.list.map((item,index) => {
                             return (
-                                <MenuItem/>
                                 // <li
                                 //    onClick={this.deleteItem.bind(this,index)}
                                 //    key={index}
                                 //    dangerouslySetInnerHTML={{__html:item}}
                                 // >
                                 // </li>
+                                <MenuItem
+                                    content={item}
+                                    index={index}
+                                    key={index+item}
+                                    deleteItem={this.deleteItem}
+                                />
                                 )
                         })
                     }

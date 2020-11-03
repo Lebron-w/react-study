@@ -1,17 +1,20 @@
-import Rreact,{Component,Fragment} from 'react'
+import {Component,Fragment} from 'react'
 class MenuItem extends Component {
     constructor (props) {
         super(props)
-        this.state= {
-            deleteItem: '',
-        }
+        this.handleClick= this.handleClick.bind(this)
+        this.state= {}
     }
     render () {
         return (
             <Fragment>
-                <li>456</li>
+                <li onClick={this.handleClick}>{this.props.content}</li>
             </Fragment>
         )
+    }
+    handleClick () {
+        this.props.deleteItem(this.props.index)
+        console.log(this.props.index)
     }
 }
 export default MenuItem
