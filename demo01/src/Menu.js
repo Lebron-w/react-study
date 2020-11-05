@@ -18,10 +18,16 @@ class Menu extends Component{
                 {/*注释*/}
                 <div>
                     <label htmlFor="add">增加导航</label>
-                    <input id="add" className="input" value={this.state.inputValue} onChange={this.inputChange.bind(this)}/>
+                    <input 
+                        id="add" 
+                        className="input" 
+                        value={this.state.inputValue} 
+                        onChange={this.inputChange.bind(this)}
+                        ref = {(input => {this.input = input})}
+                    />
                     <button onClick={this.addList.bind(this)}>增加导航</button>
                 </div>
-                <ul>
+                <ul ref={ul => {this.ul = ul}}>
                     {
                         this.state.list.map((item,index) => {
                             return (
@@ -50,7 +56,7 @@ class Menu extends Component{
         // console.log(e.target.value)
         // console.log(this)
         this.setState({
-            inputValue:e.target.value
+            inputValue: this.input.value
         })
     }
     //增加列表
@@ -58,7 +64,11 @@ class Menu extends Component{
         this.setState({
             list:[...this.state.list, this.state.inputValue],
             inputValue:''
-        })
+        },( ()=> {
+            console.log(this.ul.querySelectorAll('li').length)
+        }))
+        
+        // console.log(this.ul.querySelectorAll('li').length)
     }
     //删除列表项
     deleteItem (index) {
