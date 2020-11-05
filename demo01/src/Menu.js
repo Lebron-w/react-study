@@ -33,8 +33,10 @@ class Menu extends Component{
                                 // </li>
                                 <MenuItem
                                     content={item}
+                                    // name='title:'
                                     index={index}
                                     key={index+item}
+                                    list={this.state.list}
                                     deleteItem={this.deleteItem}
                                 />
                                 )
