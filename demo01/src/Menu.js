@@ -3,6 +3,7 @@ import './style.css'
 import MenuItem from './MenuItem.js'
 
 class Menu extends Component{
+    //在某一时刻，可以自动执行的函数
     constructor (props) {
         super(props) //调用父级的方法
         this.state = {
@@ -10,8 +11,16 @@ class Menu extends Component{
             list: ['about','product']
         }
         this.deleteItem = this.deleteItem.bind(this)
+        console.log('constructor-----数据初始化')
+    }
+    componentWillMount () {
+        console.log('conponentWillmount-------组件将要挂到页面的时刻')
+    }
+    componentDidMount () {
+        console.log('componentDidMount -------- 组件挂载完成时刻')
     }
     render () {
+        console.log('render-----组件挂在中')
         return (
             // flex
             <Fragment>
